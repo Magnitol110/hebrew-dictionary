@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Словник івриту</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Словник івриту</h1>
+        <button id="themeToggle">🌞 / 🌚</button>
+    </div>
+    <div id="words">
+        {% for word in words %}
+        <div class="word-block">
+            <h2>{{ word.word }} — {{ word.translation }}</h2>
+            <p><strong>Категорія:</strong> {{ word.category }}</p>
+            {% if word.category == 'verb' %}
+            <div class="table">
+                <p><strong>Інфінітив:</strong> {{ word.infinitive }}</p>
+                <p><strong>Теп. час:</strong> {{ word.present }}</p>
+                <p><strong>Мин. час:</strong> {{ word.past }}</p>
+                <p><strong>Майб. час:</strong> {{ word.future }}</p>
+                <p><strong>Наказ:</strong> {{ word.imperative }}</p>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
